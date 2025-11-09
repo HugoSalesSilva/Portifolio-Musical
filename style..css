@@ -31,7 +31,6 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-
 #filtro-esquerda {
   position: fixed;
   top: 0;
@@ -42,7 +41,6 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-
 #video-direita {
   position: fixed;
   top: 0;
@@ -55,7 +53,6 @@ body {
   z-index: 0;
   transform: scaleX(-1);
 }
-
 #filtro-direita {
   position: fixed;
   top: 0;
@@ -65,6 +62,17 @@ body {
   background: rgba(0,0,0,0.5);
   pointer-events: none;
   z-index: 1;
+}
+
+#video-background-mobile {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
 
 header {
@@ -131,6 +139,7 @@ section h2 {
   box-shadow: 0 0 6px #6C63FFaa;
   cursor: pointer;
   transition: transform 0.3s ease;
+  object-fit: contain; 
 }
 .grid img:hover {
   transform: scale(1.05);
@@ -171,22 +180,27 @@ footer a:hover {
   overflow: auto;
   background-color: rgba(0,0,0,0.9);
 }
+
 .modal-conteudo {
-  margin: auto;
+  margin: 40px auto 20px auto;
   display: block;
   max-width: 90%;
   max-height: 80%;
   border-radius: 10px;
+  position: relative;
+  z-index: 1001;
 }
+
 .fechar {
-  position: absolute;
-  top: 25px;
-  right: 35px;
+  position: fixed;
+  top: 15px;
+  right: 25px;
   color: #fff;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
   user-select: none;
+  z-index: 1002;
 }
 .fechar:hover {
   color: #bbb;
@@ -199,11 +213,20 @@ footer a:hover {
     border-radius: 0;
     background: rgba(18,18,18,0.9);
   }
+
   #video-esquerda,
   #video-direita,
   #filtro-esquerda,
   #filtro-direita {
     display: none;
+  }
+
+  #video-background-mobile {
+    display: block;
+  }
+
+  body {
+    background: none;
   }
 }
 
@@ -216,11 +239,37 @@ footer a:hover {
   .foto-frase-container .frase {
     max-width: 100%;
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
+
   .foto-frase-container img {
-    width: 100px;
-    height: 100px;
-    border-width: 2px;
+    width: 180px; 
+    height: 180px;
+    border-width: 3px;
+  }
+
+  .grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  .grid video {
+    flex: 0 0 auto;
+    width: 90vw;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #6C63FFaa;
+  }
+  .grid img {
+    flex: 0 0 auto;
+    max-width: 360px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #6C63FFaa;
+    object-fit: contain;
   }
 }
