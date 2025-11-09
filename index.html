@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfólio Musical - Mariana</title>
+<link rel="stylesheet" href="style..css" />
+</head>
+<body>
+  <video autoplay muted loop id="video-esquerda" src="assets/background.mp4" type="video/mp4"></video>
+  <video autoplay muted loop id="video-direita" src="assets/background.mp4" type="video/mp4"></video>
+
+  <div id="filtro-esquerda"></div>
+  <div id="filtro-direita"></div>
+
+  <div id="conteudo">
+    <header>
+      <div class="foto-frase-container">
+        <img src="assets/file.jpg" alt="Foto do Seu Nome" />
+        <div class="frase">
+          “Pessoas certas não existem, somos todos errados procurando alguém que aceite nossas imperfeições.”
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Olá! Sou Mariana, musicista e artista apaixonado por criar experiências únicas através da combinação de sons e imagens. Aqui você encontra minhas músicas, vídeos e fotos. Obrigado pela visita!</p>
+      </section>
+
+      <section id="musicas">
+        <h2>Músicas</h2>
+        <audio controls src="assets/Audio1.mp3"></audio>
+        <audio controls src="assets/Audio2.mp3"></audio>
+      </section>
+
+      <section id="videos">
+        <h2>Vídeos</h2>
+        <div class="grid">
+          <video controls src="assets/Video1.mp4"></video>
+          <video controls src="assets/Video2.mp4"></video>
+        </div>
+      </section>
+
+      <section id="fotos">
+        <h2>Fotos</h2>
+        <div class="grid">
+          <img src="assets/Image1.jpg" alt="Foto 1" />
+          <img src="assets/Image2.jpg" alt="Foto 2" />
+          <img src="assets/Image3.jpg" alt="Foto 3" />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Contato: Numero Aleatorio</p>
+      <p>
+        <a href="mailto:mariana@email.com">mariana@gmail.com</a> | 
+        <a href="https://www.instagram.com/marookass/" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </footer>
+  </div>
+
+  <div id="modal" class="modal" onclick="fecharModal()">
+    <span class="fechar">&times;</span>
+    <img class="modal-conteudo" id="imgModal" alt="Foto ampliada" />
+  </div>
+
+  <script>
+    const imagens = document.querySelectorAll('.grid img');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('imgModal');
+    const fechar = document.querySelector('.fechar');
+
+    imagens.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
+
+    function fecharModal() {
+      modal.style.display = "none";
+    }
+
+    fechar.addEventListener('click', fecharModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        fecharModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
